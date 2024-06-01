@@ -1,0 +1,56 @@
+@import url("reset.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+:root {
+  --default-font: "JetBrains Mono", monospace;
+  --bg-color: #000;
+  --font-color: #a6ff00;
+  --font-size: 1.2rem;
+  --font-weight: 100;
+  --font-line-height: 2rem;
+  --link-color: color-mix(in srgb, var(--font-color) 100%, green);
+  --link-color-hover: color-mix(in srgb, var(--font-color) 80%, black);
+}
+
+html {
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+body * {
+  overflow-wrap: break-word;
+}
+
+body {
+  font-family: var(--default-font);
+  background: var(--bg-color);
+  color: var(--font-color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--font-line-height);
+}
+
+a,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+/* Modules */
+@import "modules/iframe-fullscreen";
