@@ -5,6 +5,8 @@ let chat_Bing = "https://chatgptbots-ai.hf.space/"; // /chat/bing/
 let chat_HfJb = "https://hf.co/chat/assistant/6620df7598f70fdf437ad579"; // /chat/huggingface-jailbreak/
 
 let image_Gen_a = "https://chatgptbots-image-gen-pro.hf.space/"; // /image-gen/a/
+let image_SDXLFlash = "https://chatgptbots-sdxl-flash.hf.space/"; // /image-gen/sdxl-flash/
+
 
 function setIframeSrc(srcValue) {
   let iframe = document
