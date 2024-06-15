@@ -1,16 +1,25 @@
-let chat_Chat_a = "https://niansuhai-llms8.hf.space/"; // /chat/a/
-let chat_ChatGpt = "https://gpt-chatbotru-chat2-next.ru/#/chat"; // /chat/gpt
-let chat_Gpt35Turbo = "https://chatgptbots-2.hf.space/"; // /chat/gpt35turbo/
-let chat_Bing = "https://chatgptbots-ai.hf.space/"; // /chat/bing/
-let chat_HfJb = "https://hf.co/chat/assistant/6620df7598f70fdf437ad579"; // /chat/huggingface-jailbreak/
-
-let image_Gen_a = "https://chatgptbots-image-gen-pro.hf.space/"; // /image-gen/a/
-let image_SDXLFlash = "https://chatgptbots-sdxl-flash.hf.space/"; // /image-gen/sdxl-flash/
-
-
-function setIframeSrc(srcValue) {
-  let iframe = document
-    .getElementById("iframe-fullscreen")
-    .getElementsByTagName("iframe")[0];
-  iframe.src = srcValue;
+function addTimestamp(url) {
+  let timestamp = new Date().getTime();
+  return url + "?t=" + timestamp;
 }
+
+function loadUrlsAndUpdateIframes(jsonUrl) {
+  let urlWithTimestamp = addTimestamp(jsonUrl);
+  fetch(urlWithTimestamp)
+    .then((response) => response.json())
+    .then((urls) => {
+      let iframes = document.querySelectorAll("iframe");
+
+      iframes.forEach((iframe) => {
+        let aiId = iframe.id;
+        let newSrc = urls[aiId];
+
+        if (newSrc) {
+          iframe.src = newSrc;
+        }
+      });
+    })
+    .catch((error) => console.error("Error load ai-data.json:", error));
+}
+
+loadUrlsAndUpdateIframes("../../ai-data.json");
